@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const ItemListContainer = (props) => {
-        const products = props.products.map(product => (
+        const products = props.greeting.map(product => (
                 <>
                     <a href="#javascript" className="dropdown-item">
                         {/** Product Start */}

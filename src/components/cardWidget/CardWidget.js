@@ -6,7 +6,7 @@ import Prod3Img from './assets/img/prod-3.jpg'
 
 export const CardWidget = () => {
 
-    const productsList = [{
+    const greeting = [{
         name: 'Product1',
         img: Prod1Img,
         style: 'text-danger',
@@ -30,7 +30,7 @@ export const CardWidget = () => {
                     <span className="badge badge-danger navbar-badge">3</span>
                 </a>
                 <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <ItemListContainer products={productsList}/>
+                    <ItemListContainer greeting={greeting}/>
                     <a href="#javascript" className="dropdown-item dropdown-footer">See All Products</a>
                 </div>
             </li>
