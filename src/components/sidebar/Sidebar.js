@@ -1,7 +1,7 @@
 import AdminLTELogo from './assets/img/AdminLTELogo.png'
 import User2Img from './assets/img/user2-160x160.jpg'
 
-function Sidebar() {
+function SideBar() {
     return (
         <>
             <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -56,4 +56,4 @@ function Sidebar() {
     );
 }
 
-export default Sidebar;
+export default SideBar;

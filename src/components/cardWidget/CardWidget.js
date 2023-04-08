@@ -6,20 +6,11 @@ import Prod3Img from './assets/img/prod-3.jpg'
 
 export const CardWidget = () => {
 
-    const greeting = [{
-        name: 'Product1',
-        img: Prod1Img,
-        style: 'text-danger',
-    }, {
-        name: 'Product2',
-        img: Prod2Img,
-        style: 'text-muted',
-    }, 
-    {
-        name: 'Product3',
-        img: Prod3Img,
-        style: 'text-warning',
-    }]
+    const greeting = [
+        {id: 1, name: 'Product1', img: Prod1Img, style: 'text-danger'}, 
+        {id: 2, name: 'Product2', img: Prod2Img, style: 'text-muted'}, 
+        {id: 3, name: 'Product3', img: Prod3Img, style: 'text-warning'}
+    ]
 
     return (
         <>
