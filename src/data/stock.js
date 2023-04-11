@@ -1,37 +1,43 @@
 export const stock = [
     {
         id: 1,
-        description: "Pantalón",
+        title: "Pantalón",
+        description: "Jean Fit",
         price: 35,
         image: "https://picsum.photos/200/300"
     },
     {
         id: 2,
-        description: "Televisor",
+        title: "Televisor",
+        description: "24 pulgadas",
         price: 352,
         image: "https://picsum.photos/200/300"
     },
     {
         id: 3,
-        description: "Romero",
+        title: "Romera",
+        description: "Hierba",
         price: 200,
         image: "https://picsum.photos/200/300"
     },
     {
         id: 4,
-        description: "Remera",
+        title: "Remera",
+        description: "Manga corta",
         price: 35,
         image: "https://picsum.photos/200/300"
     },
     {
         id: 5,
-        description: "Celular",
+        title: "Celular",
+        description: "A52",
         price: 352,
         image: "https://picsum.photos/200/300"
     },
     {
         id: 6,
-        description: "Microhondas",
+        title: "Microhondas",
+        description: "30 Litros",
         price: 200,
         image: "https://picsum.photos/200/300?grayscale"
     }
