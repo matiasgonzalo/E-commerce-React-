@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import { CardWidget } from '../cardWidget/CardWidget';
 import AdminLTELogo from './assets/img/AdminLTELogo.png'
 
@@ -12,7 +13,6 @@ function NavBar() {
                         <img src={AdminLTELogo} alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: .8 }} />
                         <span className="brand-text font-weight-light">LTE Shop</span>
                     </a>
-
                     <button className="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -23,16 +23,16 @@ function NavBar() {
                                 <a className="nav-link" data-widget="pushmenu" href="#javascript" role="button"><i className="fas fa-bars"></i></a>
                             </li>*/}
                             <li className="nav-item d-none d-sm-inline-block">
-                                <a href="/" className="nav-link">Home</a>
+                                <NavLink to={'/'} className="nav-link">Home</NavLink>
                             </li>
                             <li className="nav-item dropdown">
                                 <a id="dropdownSubMenu1" href="#javascript" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle">Categories</a>
                                 <ul aria-labelledby="dropdownSubMenu1" className="dropdown-menu border-0 shadow">
                                     <li>
-                                        <a href="#javascript" className="dropdown-item">Category 1 </a>
+                                        <NavLink to={`/category/1`} className="dropdown-item">Clotes</NavLink>
                                     </li>
                                     <li>
-                                        <a href="#javascript" className="dropdown-item">Category 2</a>
+                                        <NavLink to={`/category/2`} className="dropdown-item">Tecnology</NavLink>
                                     </li>
                                 </ul>
                             </li>
