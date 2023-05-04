@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { CardWidget } from '../cardWidget/CardWidget';
+import { CartWidget } from '../cartWidget/CartWidget';
 import AdminLTELogo from './assets/img/AdminLTELogo.png'
 
 function NavBar() {
@@ -43,7 +43,7 @@ function NavBar() {
                     </div>
                     {/** Right navbar links */}
                     <ul className="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                        <CardWidget />
+                        <CartWidget />
                     </ul>
                 </div>
             </nav>

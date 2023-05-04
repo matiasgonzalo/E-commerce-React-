@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
-import { CardItemListContainer } from '../cardItemListContainer/CardItemListContainer'
+import { CartItemListContainer } from '../cartItemListContainer/CartItemListContainer'
 
-export const CardWidget = () => {
+export const CartWidget = () => {
 
     const { totalQuantity } = useContext(CartContext)
 
@@ -16,7 +16,7 @@ export const CardWidget = () => {
                     <span className="badge badge-danger navbar-badge">{totalQuantity}</span>
                 </a>
                 <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <CardItemListContainer />
+                    <CartItemListContainer />
                     <Link to="/cart" className="dropdown-item dropdown-footer">See Cart</Link>
                 </div>
             </li>
