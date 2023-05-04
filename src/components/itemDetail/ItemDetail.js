@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 import { ItemCount } from '../itemCount/ItemCount';
 
 export const ItemDetail = ({ product }) => {
+
+    const [quantityAdded, setQuantityAdded] = useState(0)
+
+    const { addItem } = useContext(CartContext)
+
+    const handleOnAdd = (quantity) => {
+        setQuantityAdded(quantity)
+
+        const {id, title, price, image1} = product
+        const item = {
+            id, title, price, image1
+        }
+
+        addItem(item, quantity)
+    }
+
     return (
         <>
             {/** Main content */}
@@ -100,7 +118,17 @@ export const ItemDetail = ({ product }) => {
                     </div>
 
                     <div className="mt-4">
-                        <ItemCount initial={1} stock={10} onAdd={(quantity) => console.log('Cantidad agregada ', quantity) }/>
+                        <div className="margin">
+                            {
+                                quantityAdded > 0 ? (
+                                    <Link to="/cart" className="btn btn-outline-primary btn-block">
+                                        Terminar compra
+                                    </Link>
+                                ) : (
+                                    <ItemCount initial={product.stock > 0 ? 1 : 0} stock={product.stock} onAdd={ handleOnAdd }/>
+                                )
+                            }
+                        </div>
                     </div>
 
                     <div className="mt-4 product-share">

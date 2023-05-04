@@ -1,16 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { CartContext } from '../../context/CartContext'
 import { CardItemListContainer } from '../cardItemListContainer/CardItemListContainer'
-import Prod1Img from './assets/img/prod-1.jpg'
-import Prod2Img from './assets/img/prod-2.jpg'
-import Prod3Img from './assets/img/prod-3.jpg'
 
 export const CardWidget = () => {
 
-    const products = [
-        {id: 1, name: 'Product1', img: Prod1Img, style: 'text-danger'}, 
-        {id: 2, name: 'Product2', img: Prod2Img, style: 'text-muted'}, 
-        {id: 3, name: 'Product3', img: Prod3Img, style: 'text-warning'}
-    ]
+    const { totalQuantity } = useContext(CartContext)
 
     return (
         <>
@@ -18,11 +13,11 @@ export const CardWidget = () => {
             <li className="nav-item dropdown">
                 <a className="nav-link" data-toggle="dropdown" href="#javascript">
                     <i className="fas fa-shopping-cart"></i>
-                    <span className="badge badge-danger navbar-badge">3</span>
+                    <span className="badge badge-danger navbar-badge">{totalQuantity}</span>
                 </a>
                 <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <CardItemListContainer products={products}/>
-                    <a href="#javascript" className="dropdown-item dropdown-footer">See All Products</a>
+                    <CardItemListContainer />
+                    <Link to="/cart" className="dropdown-item dropdown-footer">See Cart</Link>
                 </div>
             </li>
         </>
