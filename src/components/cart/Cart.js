@@ -5,7 +5,7 @@ import { CartItem } from '../cartItem/CartItem'
 
 export const Cart = () => {
 
-    const { cart, clearCart, totalQuantity, total } = useContext(CartContext)
+    const { cart, removeItem, clearCart, totalQuantity, total } = useContext(CartContext)
 
     return (
         <div className="content-wrapper">
@@ -44,18 +44,16 @@ export const Cart = () => {
                                             #
                                         </th>
                                         <th style={{width: "20%"}}>
-                                            Project Name
+                                            Product
                                         </th>
                                         <th style={{width: "30%"}}>
-                                            Team Members
+                                            Title
                                         </th>
                                         <th>
-                                            Project Progress
-                                        </th>
-                                        <th style={{width: "8%"}} className="text-center">
-                                            Status
+                                            Description
                                         </th>
                                         <th style={{width: "20%"}}>
+                                            Actions
                                         </th>
                                     </tr>
                                 </thead>
@@ -63,66 +61,41 @@ export const Cart = () => {
                                     {
                                         totalQuantity === 0 ?
                                             <tr>
-                                                <td colSpan={6} className="text-center">
+                                                <td colSpan={5} className="text-center">
                                                     <h4>No hay items en el carrito</h4>
                                                 </td>
                                             </tr>
                                         :
                                             cart.map(p => 
-                                                <tr key={p.if}>
+                                                <tr key={p.id}>
                                                     <td>
                                                         #
                                                     </td>
                                                     <td>
-                                                        <a href="#javascript">
-                                                            AdminLTE v3
-                                                        </a>
-                                                        <br/>
-                                                        <small>
-                                                            Created 01.01.2019
-                                                        </small>
-                                                    </td>
-                                                    <td>
                                                         <ul className="list-inline">
                                                             <li className="list-inline-item">
-                                                                <img alt="Avatar" className="table-avatar" src="../../dist/img/avatar.png" />
-                                                            </li>
-                                                            <li className="list-inline-item">
-                                                                <img alt="Avatar" className="table-avatar" src="../../dist/img/avatar2.png" />
-                                                            </li>
-                                                            <li className="list-inline-item">
-                                                                <img alt="Avatar" className="table-avatar" src="../../dist/img/avatar3.png" />
-                                                            </li>
-                                                            <li className="list-inline-item">
-                                                                <img alt="Avatar" className="table-avatar" src="../../dist/img/avatar4.png" />
+                                                                <img alt="Avatar" className="table-avatar" src={p.image1} />
                                                             </li>
                                                         </ul>
                                                     </td>
-                                                    <td className="project_progress">
-                                                        <div className="progress progress-sm">
-                                                            <div className="progress-bar bg-green" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style={{width: "57%"}}>
-                                                            </div>
-                                                        </div>
+                                                    <td>
+                                                        <Link to={`/item/${p.id}`}>
+                                                            { p.title }
+                                                        </Link>
+                                                    </td>
+                                                    <td>
                                                         <small>
-                                                            57% Complete
+                                                            { p.description }
                                                         </small>
                                                     </td>
-                                                    <td className="project-state">
-                                                        <span className="badge badge-success">Success</span>
-                                                    </td>
                                                     <td className="project-actions text-right">
-                                                        <a className="btn btn-primary btn-sm" href="#javacript">
-                                                            <i className="fas fa-folder">
+                                                        <Link to={`/item/${p.id}`} className="btn btn-primary btn-sm" href="#javacript">
+                                                            <i className="fas fa-eye mr-1">
                                                             </i>
                                                             View
-                                                        </a>
-                                                        <a className="btn btn-info btn-sm" href="#javacript">
-                                                            <i className="fas fa-pencil-alt">
-                                                            </i>
-                                                            Edit
-                                                        </a>
+                                                        </Link>
                                                         <a className="btn btn-danger btn-sm" href="#javacript">
-                                                            <i className="fas fa-trash">
+                                                            <i className="fas fa-trash mr-1">
                                                             </i>
                                                             Delete
                                                         </a>
