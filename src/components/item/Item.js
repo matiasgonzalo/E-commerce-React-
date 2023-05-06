@@ -13,7 +13,9 @@ export const Item = ({item}) => {
                     <div className="row">
                         <div className="col-7">
                             <h2 className="lead"><b>{item.title}</b></h2>
-                            <p className="text-muted text-sm"><b>About: </b> {item.description} </p>
+                            <p className="text-muted text-sm my-0"><b>About: </b> {item.description} </p>
+                            <p className="text-muted text-sm my-0"><b>Stock: </b> {item.stock} </p>
+                            <p className="text-muted text-sm my-0"><b>Price: $</b> {item.price} </p>
                         </div>
                         <div className="col-5 text-center">
                             <img src={item.image1} alt={item.description} className="img-circle img-fluid" />

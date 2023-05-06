@@ -5,7 +5,7 @@ import { CartItem } from '../cartItem/CartItem'
 
 export const Cart = () => {
 
-    const { cart, removeItem, clearCart, totalQuantity, total } = useContext(CartContext)
+    const { cart, clearCart, totalQuantity, total } = useContext(CartContext)
 
     return (
         <div className="content-wrapper">
@@ -40,17 +40,18 @@ export const Cart = () => {
                             <table className="table table-striped projects">
                                 <thead>
                                     <tr>
-                                        <th style={{width: "1%"}}>
-                                            #
-                                        </th>
-                                        <th style={{width: "20%"}}>
-                                            Product
-                                        </th>
-                                        <th style={{width: "30%"}}>
+                                        <th style={{width: "15%"}}></th>
+                                        <th style={{width: "18%"}}>
                                             Title
                                         </th>
-                                        <th>
+                                        <th style={{width: "30%"}}>
                                             Description
+                                        </th>
+                                        <th className="text-center">
+                                            Quantity
+                                        </th>
+                                        <th className="text-center">
+                                            Price
                                         </th>
                                         <th className="text-center" style={{width: "20%"}}>
                                             Actions
@@ -61,45 +62,12 @@ export const Cart = () => {
                                     {
                                         totalQuantity === 0 ?
                                             <tr>
-                                                <td colSpan={5} className="text-center">
+                                                <td colSpan={6} className="text-center">
                                                     <h4 className="text-muted">No hay items en el carrito</h4>
                                                 </td>
                                             </tr>
                                         :
-                                            cart.map(p => 
-                                                <tr key={p.id}>
-                                                    <td>
-                                                        #
-                                                    </td>
-                                                    <td>
-                                                        <ul className="list-inline">
-                                                            <li className="list-inline-item">
-                                                                <img alt="Avatar" className="table-avatar" src={p.image1} />
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td>
-                                                        <Link to={`/item/${p.id}`}>
-                                                            { p.title }
-                                                        </Link>
-                                                    </td>
-                                                    <td>
-                                                        <small>
-                                                            { p.description }
-                                                        </small>
-                                                    </td>
-                                                    <td className="project-actions text-center">
-                                                        <Link to={`/item/${p.id}`} className="btn btn-primary btn-xs mr-1" href="#javacript">
-                                                            <i className="fas fa-eye">
-                                                            </i>
-                                                        </Link>
-                                                        <a className="btn btn-danger btn-xs" href="#javacript">
-                                                            <i className="fas fa-trash">
-                                                            </i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            )
+                                            cart.map(p => <CartItem key={p.id} {...p} />)
                                     }
                                 </tbody>
                             </table>
@@ -107,17 +75,24 @@ export const Cart = () => {
                         {/* /.card-body */}
                         <div className="card-footer">
                             <div className="d-flex justify-content-between">
-                                <h6 className="my-auto">Total: <mark>${total}</mark></h6>
+                                <h6 className="my-auto">Total: <mark>${total()}</mark></h6>
                                 <div className="margin">
                                     <div className="d-flex justify-content-between">
-                                        <button onClick={ () => clearCart() } className="btn btn-xs btn-outline-danger mr-1">
-                                            <i className="fas fa-broom"></i>
-                                            Clear Cart
-                                        </button>
-                                        <Link to="/checkout" className="btn btn-xs btn-outline-primary mr-1">
-                                            <i className="fas fa-money-bill-wave"></i>
-                                            Checkout
-                                        </Link>
+                                        {
+                                        totalQuantity !== 0 &&
+                                            (
+                                            <>
+                                                <button onClick={ () => clearCart() } className="btn btn-xs btn-outline-danger mr-1">
+                                                    <i className="fas fa-broom"></i>
+                                                    Clear Cart
+                                                </button>
+                                                <Link to="/checkout" className="btn btn-xs btn-outline-primary mr-1">
+                                                    <i className="fas fa-money-bill-wave"></i>
+                                                    Checkout
+                                                </Link>
+                                            </>
+                                            )
+                                        }
                                         <Link to="/" className="btn btn-xs btn-outline-default bg-teal">
                                             <i className="fas fa-tag"></i>
                                             Products

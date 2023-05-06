@@ -5,7 +5,7 @@ export const getProducts = () => {
         setTimeout(() => {
             resolve(stock)
             reject("Rejacted")
-        }, 2000);
+        }, 300);
     })
 }
 
@@ -14,7 +14,7 @@ export const getProductById = (productId) => {
         setTimeout(() => {
             resolve(stock.find(prod => parseInt(prod.id) === parseInt(productId)))
             reject("Rejacted")
-        }, 2000);
+        }, 300);
     })
 }
 
@@ -23,6 +23,6 @@ export const getProductsByCategoryId = (productCategoryId) => {
         setTimeout(() => {
             resolve(stock.filter(prod => parseInt(prod.category) === parseInt(productCategoryId)))
             reject("Rejacted")
-        }, 2000);
+        }, 300);
     })
 }
