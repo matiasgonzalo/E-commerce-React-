@@ -18,7 +18,7 @@ export const Item = ({item}) => {
                             <p className="text-muted text-sm my-0"><b>Price: $</b> {item.price} </p>
                         </div>
                         <div className="col-5 text-center">
-                            <img src={item.image1} alt={item.description} className="img-circle img-fluid" />
+                            <img src={item.image1} alt={item.description} className="img-fluid" />
                         </div>
                     </div>
                 </div>

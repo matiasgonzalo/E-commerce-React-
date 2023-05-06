@@ -110,10 +110,10 @@ export const ItemDetail = ({ product }) => {
 
                     <div className="bg-gray py-2 px-3 mt-4">
                         <h2 className="mb-0">
-                            $80.00
+                            ${product.price}
                         </h2>
                         <h4 className="mt-0">
-                            <small>Ex Tax: $80.00 </small>
+                            <small>Ex Tax: ${product.price} </small>
                         </h4>
                     </div>
 

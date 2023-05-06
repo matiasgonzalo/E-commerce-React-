@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { Item } from '../item/Item'
-import { getProducts, getProductsByCategoryId } from '../../asyncMock'
 import { Link, useParams } from 'react-router-dom'
+import { getDocs, collection, query, where } from 'firebase/firestore'
+import { db } from '../../services/firebase/firebaseConfig'
 
 export const ItemListContainer = ({greeting}) => {
 
-    const [items, setItems] = useState([])
+    const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const { categoryId } = useParams()
 
     useEffect(() => {
-        const asyncFunction = categoryId ? getProductsByCategoryId : getProducts
         setLoading(true)
-        asyncFunction(categoryId)
-            .then(resp => {
-                setItems(resp)
+        const collectionRef = categoryId 
+            ? query(collection(db, 'products', where('category', '==', categoryId)))
+            : collection(db, 'products')
+
+        getDocs(collectionRef)
+            .then(response => {
+                const productsAdapted = response.docs.map(doc => {
+                    const data = doc.data()
+                    return { id: doc.id, ...data }
+                })
+                setProducts(productsAdapted)
             })
-            .catch(err => console.log(err))
+            .catch(error => {
+                console.log(error)
+            })
             .finally(() => { setLoading(false) })
     }, [categoryId])
 
@@ -58,8 +68,8 @@ export const ItemListContainer = ({greeting}) => {
                                             </div>
                                         )
                                         : (
-                                            items.map((item, i) => 
-                                                <div key={item.id} className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                            products.map((item, i) => 
+                                                <div key={item.id} className="col-12 col-sm-6 col-md-4 d-flex align-products-stretch flex-column">
                                                     <Item item={item}/>
                                                 </div>
                                             ))
