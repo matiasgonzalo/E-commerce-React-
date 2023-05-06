@@ -52,7 +52,7 @@ export const Cart = () => {
                                         <th>
                                             Description
                                         </th>
-                                        <th style={{width: "20%"}}>
+                                        <th className="text-center" style={{width: "20%"}}>
                                             Actions
                                         </th>
                                     </tr>
@@ -62,7 +62,7 @@ export const Cart = () => {
                                         totalQuantity === 0 ?
                                             <tr>
                                                 <td colSpan={5} className="text-center">
-                                                    <h4>No hay items en el carrito</h4>
+                                                    <h4 className="text-muted">No hay items en el carrito</h4>
                                                 </td>
                                             </tr>
                                         :
@@ -88,16 +88,14 @@ export const Cart = () => {
                                                             { p.description }
                                                         </small>
                                                     </td>
-                                                    <td className="project-actions text-right">
-                                                        <Link to={`/item/${p.id}`} className="btn btn-primary btn-sm" href="#javacript">
-                                                            <i className="fas fa-eye mr-1">
+                                                    <td className="project-actions text-center">
+                                                        <Link to={`/item/${p.id}`} className="btn btn-primary btn-xs mr-1" href="#javacript">
+                                                            <i className="fas fa-eye">
                                                             </i>
-                                                            View
                                                         </Link>
-                                                        <a className="btn btn-danger btn-sm" href="#javacript">
-                                                            <i className="fas fa-trash mr-1">
+                                                        <a className="btn btn-danger btn-xs" href="#javacript">
+                                                            <i className="fas fa-trash">
                                                             </i>
-                                                            Delete
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -108,11 +106,24 @@ export const Cart = () => {
                         </div>
                         {/* /.card-body */}
                         <div className="card-footer">
-                            <h3>Total: ${total}</h3>
-                            <div className="margin">
-                                <button onClick={ () => clearCart() } className="btn btn-default">Clear Cart</button>
-                                <Link to="/checkout" className="btn btn-default">Checkout</Link>
-                                <Link to="/" className="btn btn-default">Products</Link>
+                            <div className="d-flex justify-content-between">
+                                <h6 className="my-auto">Total: <mark>${total}</mark></h6>
+                                <div className="margin">
+                                    <div className="d-flex justify-content-between">
+                                        <button onClick={ () => clearCart() } className="btn btn-xs btn-outline-danger mr-1">
+                                            <i className="fas fa-broom"></i>
+                                            Clear Cart
+                                        </button>
+                                        <Link to="/checkout" className="btn btn-xs btn-outline-primary mr-1">
+                                            <i className="fas fa-money-bill-wave"></i>
+                                            Checkout
+                                        </Link>
+                                        <Link to="/" className="btn btn-xs btn-outline-default bg-teal">
+                                            <i className="fas fa-tag"></i>
+                                            Products
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
