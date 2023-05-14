@@ -13,7 +13,7 @@ export const ItemListContainer = ({greeting}) => {
     useEffect(() => {
         setLoading(true)
         const collectionRef = categoryId 
-            ? query(collection(db, 'products', where('category', '==', categoryId)))
+            ? query(collection(db, 'products'), where('category', '==', parseInt(categoryId)))
             : collection(db, 'products')
 
         getDocs(collectionRef)

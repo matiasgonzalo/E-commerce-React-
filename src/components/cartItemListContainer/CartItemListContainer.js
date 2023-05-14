@@ -19,8 +19,11 @@ export const CartItemListContainer = () => {
                                         <i className="fas fa-times" styles={{cursor:"pointer"}} onClick={() => removeItem(product.id)}></i>
                                     </span>
                                 </h3>
-                                <p className="text-sm">The short description goes here</p>
-                                <p className="text-sm text-muted"><i className="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                <p className="text-sm">{
+                                    (product.description && product.description.length > 15) 
+                                        ? product.description.substring(0,15) + '...'
+                                        : product.description
+                                }</p>
                             </div>
                         </div>
                         {/** Product End */}
