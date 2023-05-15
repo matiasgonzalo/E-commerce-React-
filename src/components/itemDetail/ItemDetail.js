@@ -121,9 +121,14 @@ export const ItemDetail = ({ product }) => {
                         <div className="margin">
                             {
                                 quantityAdded > 0 ? (
+                                    <>
                                     <Link to="/cart" className="btn btn-outline-primary btn-block">
-                                        Terminar compra
+                                        Finish Buying
                                     </Link>
+                                    <Link to="/" className="btn btn-outline-success btn-block">
+                                        See More Products
+                                    </Link>
+                                    </>
                                 ) : (
                                     <ItemCount initial={product.stock > 0 ? 1 : 0} stock={product.stock} onAdd={ handleOnAdd }/>
                                 )

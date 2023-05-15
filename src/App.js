@@ -5,6 +5,7 @@ import { ItemListContainer } from './components/itemListContainer/ItemListContai
 import { Cart } from './components/cart/Cart';
 import NavBar from "./components/navBar/NavBar";
 import { CartProvider } from './context/CartContext';
+import { Checkout } from './components/checkout/Checkout';
 //import SideBar from "./components/sideBar/SideBar";
 
 function App() {
@@ -15,10 +16,11 @@ function App() {
           <NavBar />
           {/** <SideBar /> */}
           <Routes>
-            <Route path="/" element={<ItemListContainer greeting={'Products'}/>} />
-            <Route path="/category/:categoryId" element={<ItemListContainer greeting={'Products'}/>} />
-            <Route path="/item/:itemId" element={<ItemDetailContainer />} />
-            <Route path="/cart" element={<Cart />}/>
+            <Route path='/' element={<ItemListContainer greeting={'Products'}/>} />
+            <Route path='/category/:categoryId' element={<ItemListContainer greeting={'Products'}/>} />
+            <Route path='/item/:itemId' element={<ItemDetailContainer />} />
+            <Route path='/cart' element={<Cart />}/>
+            <Route path='/checkout' element={<Checkout />}></Route>
             <Route path="*" element={<h2>404 PAGE NOT FOUND</h2>} />
           </Routes>
         </CartProvider>
